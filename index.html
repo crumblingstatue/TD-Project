@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>TD Project</title>
+    <style>
+        html,
+        body,
+        canvas {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 0;
+        }
+        @media (hover:none) {
+            #fsbutton {
+                width: 8em;
+                height: 8em;
+            }
+        }
+        @media (hover:hover) {
+            p {
+                visibility: hidden;
+            }
+            html, body, canvas {
+                overflow: hidden;
+                position: absolute;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        <button id="fsbutton" onclick="reqfs()">fullscreen</button>
+    </p>
+    <canvas id="glcanvas" tabindex='1'></canvas>
+    <!-- Minified and statically hosted version of https://github.com/not-fl3/macroquad/blob/master/native/js/mq_js_bundle.js -->
+    <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle_0.3.0.js"></script>
+    <script>
+        function reqfs() {
+            document.getElementById("glcanvas").requestFullscreen();
+        }
+        load("td.wasm");
+    </script> <!-- Your compiled wasm file -->
+</body>
+
+</html>
