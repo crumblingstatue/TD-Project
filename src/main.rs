@@ -73,6 +73,7 @@ async fn main() {
         }
         if is_key_pressed(KeyCode::C) {
             path.nodes.clear();
+            enemies.clear();
         }
         if is_key_pressed(KeyCode::E) {
             editing = !editing;
@@ -87,6 +88,21 @@ async fn main() {
         }
         if editing {
             path.project_next_at_mouse();
+        }
+        if editing {
+            draw_text("(E)dit mode on: Click to place nodes", 0., 24., 24., WHITE);
+        } else {
+            draw_text("(E)dit mode off", 0., 24., 24., WHITE);
+        }
+        if !path.nodes.is_empty() {
+            draw_text(
+                &format!("(S)pawned enemies: {}", enemies.len()),
+                0.,
+                48.,
+                24.,
+                WHITE,
+            );
+            draw_text("(C)lear", 0., 3. * 24., 24., WHITE);
         }
         next_frame().await
     }
